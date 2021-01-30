@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'ip_heatmap_api.apps.IpHeatmapApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',

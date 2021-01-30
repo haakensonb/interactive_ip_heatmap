@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from ip_heatmap_api import views
+
+# Use Django Rest router to auto wire url routing for viewset.
+router = routers.DefaultRouter()
+router.register(r'ipaddress', views.IPAddressViewSet, basename="IPAddress")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
 ]
