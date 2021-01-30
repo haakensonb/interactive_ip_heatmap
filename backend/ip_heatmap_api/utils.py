@@ -1,8 +1,9 @@
 import pandas as pd
 
+
 def csv_to_model(file_path, Model):
     """Turn CSV file data into Django Models stored in the database.
-    
+
     Make sure that CSV values fit in the fields specifed by the model.
 
     Args:
