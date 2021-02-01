@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import Heatmap from './Heatmap';
+import HeatmapContainer from './HeatmapContainer';
 
 // --------------------
 // Hack to make leaflet css work with React-Leaflet.
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} preferCanvas={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -35,7 +35,7 @@ function App() {
           </Popup>
         </Marker>
 
-        <Heatmap />
+        <HeatmapContainer />
 
       </MapContainer>
     </div>
