@@ -1,22 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useMap } from "react-leaflet";
-import L, { HeatLatLngTuple, HeatMapOptions } from 'leaflet';
+import L, { HeatLatLngTuple, HeatMapOptions, LatLng, LatLngExpression, LatLngLiteral } from 'leaflet';
 import 'leaflet.heat';
 
-function Heatmap() {
+// import { IPAddressData, State } from './useApi';
+import { State } from './useApi';
+import { HeatmapProps } from "./HeatmapContainer";
+
+function Heatmap(props: HeatmapProps) {
     const map = useMap();
 
+    const layerRef = useRef(L.featureGroup());
+
+    // L.heatLayer(props.points ? props.points : [], {}).addTo(map);
+
     useEffect(() => {
-        const points: HeatLatLngTuple[] = [
-            [51.56, -0.11, 0.2],
-            [51.42, -0.6, 0.5],
-            [51.44, -0.6, 0.5],
-            [51.46, -0.6, 0.5],
-            [51.48, -0.6, 0.5]
-        ];
+        layerRef.current.clearLayers();
+
+        console.log("points", props.points);
+        const points = (props.points !== undefined) ? props.points : [];
 
         const options: HeatMapOptions = {
-            radius: 30,
+            radius: 10,
             gradient: {
                 0.0: 'green',
                 0.5: 'yellow',
@@ -25,8 +30,10 @@ function Heatmap() {
             minOpacity: 0.5
         };
 
-        L.heatLayer(points, options).addTo(map);
-    }, [map]);
+        // L.heatLayer(points, options).addTo(map);
+        L.heatLayer(points, options).addTo(layerRef.current);
+        layerRef.current.addTo(map);
+    }, [map, props.points]); // Specifically check for changes in data?
 
     return null;
 }
