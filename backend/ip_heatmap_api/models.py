@@ -1,8 +1,7 @@
 from django.db import models
+from django.contrib.gis.db import models as geomodels
+from django.contrib.gis.geos import Point
 
-# Create your models here.
+
 class IPAddress(models.Model):
-    network = models.CharField(max_length=60)
-    # Should this use Django GIS PointField instead?
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    position = geomodels.PointField(default=Point(0.0, 0.0))
