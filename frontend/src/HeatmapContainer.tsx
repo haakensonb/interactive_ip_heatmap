@@ -6,6 +6,7 @@ import Heatmap from "./Heatmap";
 import useApi from "./useApi";
 import Sidebar from "./Sidebar";
 import "leaflet.heat";
+import Destination from "./Destination";
 
 
 /**
@@ -36,6 +37,7 @@ function HeatmapContainer() {
     return (
         <div>
             <Sidebar />
+            <Destination />
             <Heatmap {...{ points: result.data }} />
         </div>
     );

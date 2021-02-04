@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'bulma/css/bulma.css';
 
 import { MapContainer, TileLayer } from 'react-leaflet'
 import HeatmapContainer from './HeatmapContainer';
@@ -24,6 +25,10 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+        <h1 className="title">IPv4 Address Heatmap</h1>
+      </div>
+
       <MapContainer center={[39.791000, -86.148003]} zoom={12} scrollWheelZoom={false} preferCanvas={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
