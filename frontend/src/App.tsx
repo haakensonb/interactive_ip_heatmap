@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
+import 'bulma/css/bulma.css';
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import Heatmap from './Heatmap';
+import { MapContainer, TileLayer } from 'react-leaflet'
+import HeatmapContainer from './HeatmapContainer';
 
 // --------------------
 // Hack to make leaflet css work with React-Leaflet.
@@ -24,18 +25,17 @@ function App() {
 
   return (
     <div className="App">
-      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+      <div>
+        <h1 className="title">IPv4 Address Heatmap</h1>
+      </div>
+
+      <MapContainer center={[39.791000, -86.148003]} zoom={12} scrollWheelZoom={false} preferCanvas={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
 
-        <Heatmap />
+        <HeatmapContainer />
 
       </MapContainer>
     </div>
