@@ -7,3 +7,7 @@
   width: 100wh;
   height: 100vh;
 }
+
+.leaflet-heatmap-layer {
+  opacity: .65;
+}
