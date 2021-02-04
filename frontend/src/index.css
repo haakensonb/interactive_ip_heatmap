@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sidebarStyle {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1vw;
+  background-color: #404040;
+  color: #ffffff;
+  z-index: 9999 !important;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.destStyle {
+  display: inline-block;
+  position: absolute;
+  bottom: 1vh;
+  left: 0;
+  margin: 1vw;
+  background-color: #404040;
+  color: #ffffff;
+  z-index: 9999 !important;
+  padding: 1vw 1vw 1vw 1vw;
+  font-weight: bold;
+}
+
+.header {
+  padding: 1vh 1vh 1vh 0vh;
+}
