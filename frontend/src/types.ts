@@ -20,3 +20,9 @@ export type State = {
 export interface HeatmapProps {
     points?: HeatLatLngTuple[];
 }
+
+export interface SidebarData {
+    lng: string;
+    lat: string;
+    zoom: number;
+}

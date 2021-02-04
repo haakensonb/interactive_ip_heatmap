@@ -4,6 +4,7 @@ import { useMap, useMapEvent } from "react-leaflet";
 import { urlBoundsFormat } from "./utils";
 import Heatmap from "./Heatmap";
 import useApi from "./useApi";
+import Sidebar from "./Sidebar";
 import "leaflet.heat";
 
 
@@ -33,7 +34,10 @@ function HeatmapContainer() {
     }, [bounds, setUrl]);
 
     return (
-        <Heatmap {...{ points: result.data }} />
+        <div>
+            <Sidebar />
+            <Heatmap {...{ points: result.data }} />
+        </div>
     );
 }
 
