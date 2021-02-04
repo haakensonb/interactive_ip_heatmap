@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from .my_secrets import SECRET_KEY, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME
+import os
+# from .my_secrets import SECRET_KEY, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME
+SECRET_KEY = os.environ['SECRET_KEY']
+DB_NAME = os.environ['DB_NAME']
+DB_PASSWORD = os.environ['DB_PASSWORD']
+DB_PORT = os.environ['DB_PORT']
+DB_USERNAME = os.environ['DB_USERNAME']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
