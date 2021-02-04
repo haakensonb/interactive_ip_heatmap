@@ -12,8 +12,11 @@ class CustomPointField(serializers.Field):
 
 
 class IPAddressSerializer(serializers.ModelSerializer):
-    position = CustomPointField()
+    # Short field names used in this case to reduce json size
+    # until more compressed protocol is used.
+    p = CustomPointField()
+    c = serializers.IntegerField()
 
     class Meta:
         model = IPAddress
-        fields = ("position",)
+        fields = ("p", "c")

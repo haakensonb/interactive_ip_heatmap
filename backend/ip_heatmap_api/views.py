@@ -16,7 +16,7 @@ class IPAddressViewSet(viewsets.ViewSet):
         if (top_lat and top_lng and bot_lat and bot_lng):
             bbox = (top_lat, top_lng, bot_lat, bot_lng)
             geom = Polygon.from_bbox(bbox)
-            queryset = IPAddress.objects.filter(position__within=geom)
+            queryset = IPAddress.objects.filter(p__within=geom)
             serializer = IPAddressSerializer(queryset, many=True)
             return Response(serializer.data)
         else:
