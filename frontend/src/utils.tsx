@@ -7,5 +7,5 @@ import { BASE_URL } from "./my_constants";
  * @param bounds coordinate bounding box
  */
 export function urlBoundsFormat(bounds: LatLngBounds): string {
-    return `${BASE_URL}/ipaddress/?top_lat=${bounds.getNorthEast().lat}&top_lng=${bounds.getNorthEast().lng}&bot_lat=${bounds.getSouthWest().lat}&bot_lng=${bounds.getSouthWest().lng}`;
+    return `${BASE_URL}/api/ipaddress/?top_lat=${bounds.getNorthEast().lat}&top_lng=${bounds.getNorthEast().lng}&bot_lat=${bounds.getSouthWest().lat}&bot_lng=${bounds.getSouthWest().lng}`;
 }

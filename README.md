@@ -1,5 +1,12 @@
 # Interactive IP Address Heatmap
 
+### Technologies Used
+- React, React-leaflet
+- Typescript
+- Leaflet, Leaflet.heat
+- Django Rest Framework
+- PostGIS
+
 ### Steps Taken
 
 1. Research heatmaps and possible technologies to use.
