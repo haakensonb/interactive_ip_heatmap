@@ -21,19 +21,24 @@ function Heatmap(props: HeatmapProps) {
         const points = (props.points !== undefined) ? props.points : [];
 
         const options: HeatMapOptions = {
-            radius: 10,
-            gradient: {
-                0.0: 'green',
-                0.5: 'yellow',
-                1.0: 'red'
-            },
-            minOpacity: 0.5
+            // radius: 20,
+            // gradient: {
+            //     0.0: 'green',
+            //     0.5: 'yellow',
+            //     1.0: 'red'
+            // },
+            // minOpacity: 0.15
         };
 
         // L.heatLayer(points, options).addTo(map);
         L.heatLayer(points, options).addTo(layerRef.current);
         layerRef.current.addTo(map);
     }, [map, props.points]); // Specifically check for changes in data?
+
+    // L.heatLayer([
+    //     [51.504, -0.08, 0.1],
+    //     [51.505, -0.10, 100],
+    // ], { minOpacity: 0.2 }).addTo(map);
 
     return null;
 }
