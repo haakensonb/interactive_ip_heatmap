@@ -22,11 +22,11 @@ function Heatmap(props: HeatmapProps) {
 
         const options: HeatMapOptions = {
             // radius: 20,
-            // gradient: {
-            //     0.0: 'green',
-            //     0.5: 'yellow',
-            //     1.0: 'red'
-            // },
+            gradient: {
+                0.0: 'green',
+                0.5: 'yellow',
+                1.0: 'red'
+            },
             // minOpacity: 0.15
         };
 

@@ -21,19 +21,18 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 
 function App() {
+  // If I understand Mapbox correctly, this token is public and ok to use here.
+  const my_token: string = "pk.eyJ1IjoiaGFha2Vuc29uYiIsImEiOiJja2trN3p5c2gxN2l1Mm9vZHQ3eWQxa3FoIn0.tT2wWv80-O0O1mCR69cBbg";
 
   return (
     <div className="App">
       <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} preferCanvas={true}>
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+          url='https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}'
+          id='mapbox/dark-v10'
+          accessToken={my_token}
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
 
         <HeatmapContainer />
 
