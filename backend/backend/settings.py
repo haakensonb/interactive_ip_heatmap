@@ -30,12 +30,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'interactive-ipaddress-heatmap.herokuapp.com', 'localhost:3000']
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    'localhost:3000',
+    'interactive-ipaddress-heatmap.herokuapp.com'
 ]
 
 # Application definition
