@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import django
 import django_heroku
+import dj_database_url
 from pathlib import Path
 import os
 # from .my_secrets import SECRET_KEY, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME
@@ -157,4 +158,7 @@ STATICFILES_DIRS = []
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'build', 'media')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Have to overwrite again because of heroku
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
