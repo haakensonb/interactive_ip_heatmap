@@ -26,12 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-prebuild": "NODE_ENV=production cd frontend/ && yarn install && yarn build && cd .."
+    "eject": "react-scripts eject"
   },
-  "cacheDirectories": [
-    "frontend/node_modules"
-  ],
+  "proxy": "http://localhost:8000",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -23,6 +23,7 @@ router = routers.DefaultRouter()
 router.register(r'ipaddress', views.IPAddressViewSet, basename="IPAddress")
 
 urlpatterns = [
+    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 ]

@@ -1,3 +1,5 @@
+from django.views.decorators.cache import never_cache
+from django.views.generic import TemplateView
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from ip_heatmap_api.models import IPAddress
@@ -21,3 +23,7 @@ class IPAddressViewSet(viewsets.ViewSet):
             return Response(serializer.data)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+# Serve single page application
+index = never_cache(TemplateView.as_view(template_name='index.html'))
