@@ -17,6 +17,8 @@ services:
     environment:
       - DEBUG=False
       - DB_HOST=db
+      # Fill in with URL where app will be deployed
+      - PROD_HOST=localhost
     build:
       context: .
       dockerfile: ./Dockerfile
