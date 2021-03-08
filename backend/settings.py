@@ -21,6 +21,9 @@ DB_NAME = os.environ['DB_NAME']
 DB_PASSWORD = os.environ['DB_PASSWORD']
 DB_PORT = os.environ['DB_PORT']
 DB_USERNAME = os.environ['DB_USERNAME']
+DB_HOST = os.environ['DB_HOST']
+
+DEBUG = os.environ['DEBUG']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +36,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = DEBUG
 
 ALLOWED_HOSTS = [
     'interactive-ipaddress-heatmap.herokuapp.com', 'localhost:3000', 'localhost:8000']
@@ -103,7 +106,7 @@ DATABASES = {
         'NAME': DB_NAME,
         'USER': DB_USERNAME,
         'PASSWORD': DB_PASSWORD,
-        'HOST': 'localhost',
+        'HOST': DB_HOST,
         'PORT': DB_PORT
     }
     # 'default': {

@@ -1,6 +1,7 @@
 my_secrets.py
 *.sqlite3
 env
+.env
 *.pyc
 */*/*/__pycache__/
 */*/__pycache__/

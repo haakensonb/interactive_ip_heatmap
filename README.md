@@ -1,5 +1,15 @@
 # Interactive IP Address Heatmap
 
+### Run Locally With Docker
+
+1. Rename `.env-example` to `.env`
+2. Build containers `docker-compose build`
+3. Run containers `docker-compose up -d`
+4. Make sure `loadDB.sh` is executable.
+5. Run `docker ps` and copy "Container Id" for Postgres.
+6. Run `./loadDB.sh <Container Id here>`
+7. Browse to `http://localhost:8000/`
+
 ### Technologies Used
 - React, React-leaflet
 - Typescript

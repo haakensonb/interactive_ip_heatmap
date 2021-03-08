@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgis/postgis
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    env_file: .env
+    expose:
+      - "5432"
+    ports:
+      - 5432:5432
+
+  interactiveipheatmap:
+    image: interactiveipheatmap
+    env_file: .env
+    environment:
+      - DEBUG=False
+      - DB_HOST=db
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: >
+      bash -c "python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
