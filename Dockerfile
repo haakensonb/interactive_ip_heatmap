@@ -9,12 +9,11 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Install Psycopg dependencies
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y postgresql libpq-dev gcc python3-dev python3-psycopg2 && \
-    apt-get install -y binutils libproj-dev gdal-bin && \
-    apt-get install -y curl && \
+# Install dependencies: psycopg, Geospatial libs, node
+RUN apt-get update && apt-get install -y \
+    gcc libpq-dev python3-dev python3-psycopg2 \
+    binutils libproj-dev gdal-bin \
+    curl && \
     curl -fsSL https://deb.nodesource.com/setup_15.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean
@@ -23,8 +22,7 @@ RUN apt-get update && \
 COPY requirements.txt .
 RUN python3 -m pip install -r requirements.txt
 
-# Install node requirements
-# FROM node:14
+# Install npm requirements
 COPY package*.json ./
 RUN npm install
 
@@ -35,6 +33,4 @@ COPY . /app
 RUN useradd appuser && chown -R appuser /app
 USER appuser
 
-# During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-# File wsgi.py was not found in subfolder: 'interactive_ip_heatmap'. Please enter the Python path to wsgi file.
-# CMD ["gunicorn", "--bind", "0.0.0.0:8000", "./backend/wsgi.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.wsgi:application"]
