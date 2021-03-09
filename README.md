@@ -15,13 +15,12 @@ The goal of this project was to take a dataset with IPv4 address locations and p
 
 # Run Locally With Docker
 
-1. Rename `.env-example` to `.env`
-2. Build containers `docker-compose build`
-3. Run containers `docker-compose up -d`
-4. Make sure `loadDB.sh` is executable.
-5. Run `docker ps` and copy "Container Id" for Postgres.
-6. Run `./loadDB.sh <Container Id here>`
-7. Browse to [http://localhost:8000/]()
+1. Build containers `docker-compose build`
+2. Run containers `docker-compose up -d`
+3. Run `docker ps` and copy "Container Id" for Postgres.
+4. Run `docker exec -it <Container Id here> bash`
+5. Run `./loadDB.sh` then `exit`.
+6. Browse to [http://localhost:8000/]()
 
 # Technologies Used
 - React, React-leaflet

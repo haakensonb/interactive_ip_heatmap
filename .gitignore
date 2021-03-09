@@ -9,3 +9,4 @@ env
 .vscode/
 node_modules/
 .eslintcache
+docker-compose.prod.yml

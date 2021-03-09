@@ -1,24 +1,27 @@
-version: '3.4'
+version: '3'
 
 services:
   db:
-    image: postgis/postgis
+    build: ./db
     volumes: 
       - postgres_data:/var/lib/postgresql/data
-    env_file: .env
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
     expose:
       - "5432"
     ports:
       - 5432:5432
+    networks:
+      - app-network
 
   interactiveipheatmap:
     image: interactiveipheatmap
-    env_file: .env
     environment:
-      - DEBUG=False
+      - DB_NAME=postgres
+      - DB_USERNAME=postgres
+      - DB_PORT=5432
       - DB_HOST=db
-      # Fill in with URL where app will be deployed
-      - PROD_HOST=localhost
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -26,6 +29,12 @@ services:
       - 8000:8000
     depends_on:
       - db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   postgres_data:

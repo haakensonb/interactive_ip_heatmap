@@ -33,16 +33,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = DEBUG
+# Envs are injected as strings not bools
+DEBUG = True if DEBUG == 'True' else False
 
-ALLOWED_HOSTS = [
-    PROD_HOST, 'localhost:3000', 'localhost:8000']
+ALLOWED_HOSTS = ['localhost', PROD_HOST]
 
-CORS_ALLOWED_ORIGINS = [
-    'https://localhost:3000',
-    'https://localhost:8000',
-    PROD_HOST
-]
+CORS_ALLOWED_ORIGINS = ['localhost', PROD_HOST]
 
 # Application definition
 
