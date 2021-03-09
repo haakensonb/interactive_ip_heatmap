@@ -15,7 +15,7 @@
 The goal of this project was to take a dataset with IPv4 address locations and plot them as an interactive heatmap.
 
 # Try it out!
-See the project live [http://ec2-3-142-142-166.us-east-2.compute.amazonaws.com/](here)
+See the project live [here](http://ec2-3-142-142-166.us-east-2.compute.amazonaws.com/)
 
 # Run Locally With Docker
 
