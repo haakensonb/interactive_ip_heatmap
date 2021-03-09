@@ -1,3 +1,4 @@
+version: '3'
 # When actually deploying, change to real values and
 # rename this file to "docker-compose.prod.yml".
 # Then run with "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"

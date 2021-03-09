@@ -1,3 +1,4 @@
+version: '3'
 # Override Env vars with passwords only used for local dev
 services:
   db:
