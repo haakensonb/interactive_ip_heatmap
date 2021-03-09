@@ -1,0 +1,16 @@
+version: '3'
+# When actually deploying, change to real values and
+# rename this file to "docker-compose.prod.yml".
+# Then run with "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+services:
+  db:
+    environment:
+      - POSTGRES_PASSWORD=secure_prod_pass
+
+  interactiveipheatmap:
+    image: some_image_repo
+    environment:
+      - DB_PASSWORD=secure_prod_pass
+      - DEBUG=False
+      - PROD_HOST=localhost
+      - SECRET_KEY=SgjVVL/FHZc35mn8SHF99Z6JM1dygopTwiP4H2ba+UjbIxnrlb

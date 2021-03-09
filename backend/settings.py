@@ -10,17 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import django
-import django_heroku
-import dj_database_url
 from pathlib import Path
 import os
-# from .my_secrets import SECRET_KEY, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME
+# Import OS envs
 SECRET_KEY = os.environ['SECRET_KEY']
 DB_NAME = os.environ['DB_NAME']
 DB_PASSWORD = os.environ['DB_PASSWORD']
 DB_PORT = os.environ['DB_PORT']
 DB_USERNAME = os.environ['DB_USERNAME']
+DB_HOST = os.environ['DB_HOST']
+DEBUG = os.environ['DEBUG']
+PROD_HOST = os.environ['PROD_HOST']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,16 +33,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# Envs are injected as strings not bools
+DEBUG = True if DEBUG == 'True' else False
 
-ALLOWED_HOSTS = [
-    'interactive-ipaddress-heatmap.herokuapp.com', 'localhost:3000', 'localhost:8000']
+ALLOWED_HOSTS = ['localhost', PROD_HOST]
 
-CORS_ALLOWED_ORIGINS = [
-    'https://localhost:3000',
-    'https://localhost:8000',
-    'https://interactive-ipaddress-heatmap.herokuapp.com'
-]
+CORS_ALLOWED_ORIGINS = ['localhost', PROD_HOST]
 
 # Application definition
 
@@ -103,7 +99,7 @@ DATABASES = {
         'NAME': DB_NAME,
         'USER': DB_USERNAME,
         'PASSWORD': DB_PASSWORD,
-        'HOST': 'localhost',
+        'HOST': DB_HOST,
         'PORT': DB_PORT
     }
     # 'default': {
@@ -148,8 +144,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-django_heroku.settings(locals())
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
 STATICFILES_DIRS = []
@@ -159,6 +153,3 @@ STATICFILES_DIRS = []
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'build', 'media')
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Have to overwrite again because of heroku
-DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
