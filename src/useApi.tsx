@@ -58,7 +58,9 @@ function useApi(initialUrl: string) {
             try {
                 const result = await axios(url);
                 // HACK: Kind of inefficient to map through large arrays to create the proper type...
-                const data: HeatLatLngTuple[] = result.data.map((p: any) => [p["p"]["lat"], p["p"]["lng"], p["c"]]);
+                // const data: HeatLatLngTuple[] = result.data.map((p: any) => [p["p"]["lat"], p["p"]["lng"], p["c"]]);
+                console.log(result);
+                const data: HeatLatLngTuple[] = result.data.map((p: any) => [p["lat"], p["lng"], p["count"]]);
                 dispatch({ type: FetchStates.SUCCESS, payload: data });
             } catch (error) {
                 dispatch({ type: FetchStates.FAILURE })

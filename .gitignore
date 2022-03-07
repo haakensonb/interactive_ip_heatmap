@@ -10,3 +10,4 @@ env
 node_modules/
 .eslintcache
 docker-compose.prod.yml
+GeoLite2-City-Blocks-IPv4.csv

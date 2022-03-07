@@ -4,7 +4,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from ip_heatmap_api.models import IPAddress
 from ip_heatmap_api.serializers import IPAddressSerializer
-from django.contrib.gis.geos import Polygon
+# from django.contrib.gis.geos import Polygon
 
 
 class IPAddressViewSet(viewsets.ViewSet):
@@ -16,9 +16,10 @@ class IPAddressViewSet(viewsets.ViewSet):
         # Rudimentary boundry box check.
         # TODO: Handle edge cases
         if (top_lat and top_lng and bot_lat and bot_lng):
-            bbox = (top_lat, top_lng, bot_lat, bot_lng)
-            geom = Polygon.from_bbox(bbox)
-            queryset = IPAddress.objects.filter(p__within=geom)
+            # bbox = (top_lat, top_lng, bot_lat, bot_lng)
+            # geom = Polygon.from_bbox(bbox)
+            # queryset = IPAddress.objects.filter(p__within=geom)
+            queryset = IPAddress.objects.filter(lat__lte=top_lat, lat__gte=bot_lat).filter(lng__lte=top_lng, lng__gte=bot_lng)
             serializer = IPAddressSerializer(queryset, many=True)
             return Response(serializer.data)
         else:

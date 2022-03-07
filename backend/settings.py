@@ -14,11 +14,6 @@ from pathlib import Path
 import os
 # Import OS envs
 SECRET_KEY = os.environ['SECRET_KEY']
-DB_NAME = os.environ['DB_NAME']
-DB_PASSWORD = os.environ['DB_PASSWORD']
-DB_PORT = os.environ['DB_PORT']
-DB_USERNAME = os.environ['DB_USERNAME']
-DB_HOST = os.environ['DB_HOST']
 DEBUG = os.environ['DEBUG']
 PROD_HOST = os.environ['PROD_HOST']
 
@@ -36,16 +31,16 @@ SECRET_KEY = SECRET_KEY
 # Envs are injected as strings not bools
 DEBUG = True if DEBUG == 'True' else False
 
-ALLOWED_HOSTS = ['localhost', PROD_HOST]
+ALLOWED_HOSTS = ['localhost', 'http://localhost', 'https://localhost', PROD_HOST]
 
-CORS_ALLOWED_ORIGINS = ['localhost', PROD_HOST]
+CORS_ALLOWED_ORIGINS = ['http://localhost', 'https://localhost', PROD_HOST]
 
 # Application definition
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
+    # 'django.contrib.gis',
     'corsheaders',
     'rest_framework',
     'ip_heatmap_api.apps.IpHeatmapApiConfig',
@@ -95,17 +90,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': DB_NAME,
-        'USER': DB_USERNAME,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
 }
 
 

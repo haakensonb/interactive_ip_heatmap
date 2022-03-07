@@ -12,5 +12,5 @@ services:
     environment:
       - DB_PASSWORD=secure_prod_pass
       - DEBUG=False
-      - PROD_HOST=localhost
+      - PROD_HOST=https://localhost:8000
       - SECRET_KEY=SgjVVL/FHZc35mn8SHF99Z6JM1dygopTwiP4H2ba+UjbIxnrlb
