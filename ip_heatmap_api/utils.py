@@ -1,19 +1,14 @@
 import pandas as pd
-# import numpy as np
 from ip_heatmap_api.models import IPAddress
-# from django.contrib.gis.geos import Point
 from itertools import islice
 
-FILE_PATH = "/home/brandon/GeoLite2-City-CSV_20190618/GeoLite2-City-Blocks-IPv4.csv"
-
-
-def csv_to_IPAddress_model(file_path=FILE_PATH):
+def csv_to_IPAddress_model(file_path):
     """Turn CSV file data into Django Models stored in the database.
 
-    Make sure that CSV has columns for latitude and longitude.
+    Make sure that CSV has columns for 'latitude' and 'longitude'.
 
     Args:
-        file_path (str): absolute file path to csv file
+        file_path (str): file path to csv file
     """
     LAT, LNG = "latitude", "longitude"
 
@@ -36,8 +31,6 @@ def csv_to_IPAddress_model(file_path=FILE_PATH):
     # Try to create in batches because dataset is too large.
     # See: https://docs.djangoproject.com/en/3.1/ref/models/querysets/#bulk-create
     batch_size = 1000
-    # objs = (IPAddress(p=Point(vals[LAT], vals[LNG]), c=vals['count'])
-    #         for vals in df2.to_dict('records'))
     objs = (IPAddress(lat=vals[LAT], lng=vals[LNG], count=vals['count'])
             for vals in df2.to_dict('records'))
     while True:

@@ -38,12 +38,11 @@ CORS_ALLOWED_ORIGINS = ['http://localhost', 'https://localhost', PROD_HOST]
 # Application definition
 
 INSTALLED_APPS = [
+    'ip_heatmap_api.apps.IpHeatmapApiConfig',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    # 'django.contrib.gis',
     'corsheaders',
     'rest_framework',
-    'ip_heatmap_api.apps.IpHeatmapApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
