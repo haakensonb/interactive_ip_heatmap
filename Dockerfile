@@ -18,8 +18,8 @@ RUN python -m pip install -r requirements.txt
 RUN useradd appuser && chown -R appuser /app
 USER appuser
 
-EXPOSE 8000
+# Need to use PORT env variable this way because of heroku
 CMD python3 manage.py collectstatic --noinput && \
     python3 manage.py migrate && \
     python3 manage.py load_ips_csv && \
-    gunicorn --bind 0.0.0.0:8000 backend.wsgi:application
+    gunicorn --bind 0.0.0.0:$PORT backend.wsgi:application

@@ -12,6 +12,7 @@ See the project live [here](http://ec2-3-142-142-166.us-east-2.compute.amazonaws
 docker build -t ip-heatmap .
 
 docker run -d -p 8000:8000 \
+--env PORT=8000
 --env DEBUG=True \
 --env PROD_HOST=https://localhost \
 --env SECRET_KEY=insecure_dev_key \
