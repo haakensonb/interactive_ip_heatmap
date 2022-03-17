@@ -16,6 +16,7 @@ import os
 SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = os.environ['DEBUG']
 PROD_HOST = os.environ['PROD_HOST']
+PROD_HOST_WITH_SCHEME = os.environ['PROD_HOST_WITH_SCHEME']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +34,7 @@ DEBUG = True if DEBUG == 'True' else False
 
 ALLOWED_HOSTS = ['localhost', 'http://localhost', 'https://localhost', PROD_HOST]
 
-CORS_ALLOWED_ORIGINS = ['http://localhost', 'https://localhost', PROD_HOST]
+CORS_ALLOWED_ORIGINS = ['http://localhost', 'https://localhost', PROD_HOST_WITH_SCHEME]
 
 # Application definition
 
