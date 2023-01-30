@@ -1,6 +1,6 @@
 FROM node:14 as build-step
 WORKDIR /app
-COPY ./package*.json .
+COPY ./package*.json ./
 COPY ./src ./src
 COPY ./public ./public
 RUN npm install && npm run build
