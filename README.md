@@ -5,7 +5,7 @@
 The goal of this project was to take a dataset with IPv4 address locations and plot them as an interactive heatmap.
 
 ## Try it out!
-See the project live [here](https://enigmatic-reaches-93057.herokuapp.com/)
+See the project live [here](https://ip-heatmap.brandonhaakenson.com/)
 
 ## Run Locally With Docker
 ```
